@@ -1,4 +1,3 @@
-import { Header } from '@/components/Header/header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { SearchIcon } from 'lucide-react';
@@ -7,7 +6,6 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div>
-      <Header />
       <div className="p-5">
         <h2 className="text-2xl font-bold">Olá, Bezerra!</h2>
         <p className="text-sm">Sexta-feira, 15 de maio.</p>
@@ -17,7 +15,7 @@ export default function Home() {
             <SearchIcon />
           </Button>
         </div>
-        <div className="mt-6 flex justify-between gap-3">
+        <div className="mt-6 flex justify-between">
           <Button variant="outline">
             <Image
               src="/scissors.png"
@@ -45,6 +43,14 @@ export default function Home() {
             />
             Acabamento
           </Button>
+        </div>
+        <div className="relative w-full h-[150px] mt-6">
+          <Image
+            className="object-cover rounded-xl"
+            src="/banner01.png"
+            fill
+            alt="Agende com os melhores profissionais"
+          />
         </div>
       </div>
     </div>
