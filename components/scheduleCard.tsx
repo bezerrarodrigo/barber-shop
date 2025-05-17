@@ -1,7 +1,6 @@
 import { Avatar, AvatarImage, AvatarFallback } from '@radix-ui/react-avatar';
-
-import { Card, CardContent } from '../ui/card';
-import { Badge } from '../ui/badge';
+import { Card, CardContent } from './ui/card';
+import { Badge } from './ui/badge';
 
 export function ScheduleCard() {
   return (

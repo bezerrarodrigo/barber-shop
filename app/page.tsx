@@ -1,11 +1,16 @@
-import { Heading } from '@/components/Heading/heading';
-import { ScheduleCard } from '@/components/Schedule/scheduleCard';
+import { BarberShopItem } from '@/components/barbershop-item';
+import { Heading } from '@/components/heading';
+import { ScheduleCard } from '@/components/scheduleCard';
+import { SearchFilter } from '@/components/searchFilter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { db } from '@/lib/prisma';
 import { SearchIcon } from 'lucide-react';
 import Image from 'next/image';
 
-export default function Home() {
+export default async function Home() {
+  const barbershops = await db.barberShop.findMany({});
+
   return (
     <div className="max-w-[600px] mx-auto">
       <div className="p-5">
@@ -17,35 +22,7 @@ export default function Home() {
             <SearchIcon />
           </Button>
         </div>
-        <div className="mt-6 flex justify-between">
-          <Button variant="outline">
-            <Image
-              src="/scissors.png"
-              alt="Scissors icon"
-              width={14}
-              height={14}
-            />
-            Cabelo
-          </Button>
-          <Button variant="outline">
-            <Image
-              src="/mustache.png"
-              alt="Scissors icon"
-              width={14}
-              height={14}
-            />
-            Barba
-          </Button>
-          <Button variant="outline">
-            <Image
-              src="/razor.png"
-              alt="Scissors icon"
-              width={14}
-              height={14}
-            />
-            Acabamento
-          </Button>
-        </div>
+        <SearchFilter />
         <div className="relative w-full h-[150px] my-6">
           <Image
             className="object-cover rounded-xl"
@@ -56,6 +33,12 @@ export default function Home() {
         </div>
         <Heading title="Agendamentos" />
         <ScheduleCard />
+        <Heading title="Recomendados" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {barbershops.map((barber) => (
+            <BarberShopItem key={barber.id} barber={barber} />
+          ))}
+        </div>
       </div>
     </div>
   );
