@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "BarberShop" ADD COLUMN     "rate" DOUBLE PRECISION DEFAULT 4.5;

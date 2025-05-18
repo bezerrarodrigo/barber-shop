@@ -22,7 +22,7 @@ export function BarberShopItem({ barber }: BarberShopItemProps) {
           />
           <Badge variant="secondary" className="absolute top-2 left-2">
             <StarIcon className="text-primary fill-primary" />
-            <span className="text-xs">4.5</span>
+            <span className="text-xs font-semibold">{barber.rate}</span>
           </Badge>
         </div>
         <div className="my-2">
